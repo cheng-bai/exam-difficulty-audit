@@ -1,0 +1,24 @@
+# ---- 产出与临时文件 ----
+out/*
+!out/.gitkeep
+build_log.txt
+__pycache__/
+*.py[cod]
+*.pyo
+
+# ---- 使用者自备的试卷数据（务必保持忽略，避免把第三方试题推入公开仓库）----
+papers/*
+!papers/.gitkeep
+!papers/README.md
+
+# ---- 本地私有扩展 ----
+/papers/papers.json
+private/
+*.local.*
+
+# ---- 编辑器与系统 ----
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini

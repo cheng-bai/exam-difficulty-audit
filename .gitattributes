@@ -1,0 +1,14 @@
+# 统一换行符：引擎写文件时使用 LF（newline="\n"），因此在所有平台上都保持 LF，
+# 避免在 Windows 上因 autocrlf 产生整文件 diff 噪音。
+* text=auto eol=lf
+
+# 明确标记二进制，避免被当作文本处理
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.pdf binary
+*.pptx binary
+*.docx binary
+*.xlsx binary
+*.zip binary
