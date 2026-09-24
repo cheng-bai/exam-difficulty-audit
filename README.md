@@ -30,7 +30,9 @@ English: A rule-based difficulty audit toolkit for exam papers. It scores each s
 python src/build.py --demo
 
 # 2. 查看产出
-#    out/demo-教师阅读版.md      教师阅读版（原题+答案+解析+批注+量化）
+#    out/demo_a-教师阅读版.md    教师阅读版（原题+答案+解析+批注+量化）· 基础取向
+#    out/demo_b-教师阅读版.md    同上 · 综合取向（含一个难题）
+#    out/demo-跨卷难度总报告.md  两卷对比报告
 #    out/评分明细.json           全部步骤级证据，可复算
 #    out/逐小问评分.csv          一行一个小问
 #    out/步骤类型词典.json       步骤类型定义
@@ -59,7 +61,7 @@ python src/build.py --papers papers
 |---|---|---|
 | `--papers DIR` | `papers` | 试卷数据目录，需含 `data_<id>.py` |
 | `--body DIR` | 同 `--papers` | 正文 md 目录（与数据分开放时指定） |
-| `--out DIR` | `out` | 产出目录，需预先存在 |
+| `--out DIR` | `out` | 产出目录，不存在时自动创建 |
 | `--demo` | — | 等价于 `--papers examples/demo` |
 | `--config FILE` | `<papers>/papers.json` | 跨卷报告配置，存在即生成 |
 | `--no-cross` | — | 强制不生成跨卷报告 |
@@ -135,11 +137,14 @@ exam-difficulty-audit/
 ├─ src/
 │   ├─ build.py             引擎：复算 + 排版 + 机器可读输出
 │   ├─ cross_paper.py       跨卷对比报告（配置驱动，可选）
+│   ├─ paper_lib.py         数据构造库 S()/U()/Q()/paper()，含取值即时校验
 │   ├─ step_types.py        步骤类型词典（起始版，可自行扩展）
 │   └─ check_syntax.py      数据文件语法体检（分块手写易漏括号）
-├─ examples/demo/           自拟示例卷（不含任何真题原文）
-│   ├─ data_demo.py
-│   └─ demo.md
+├─ examples/demo/           两份自拟示例卷（不含任何真题原文）
+│   ├─ data_demo_a.py / demo_a.md    基础取向
+│   ├─ data_demo_b.py / demo_b.md    综合取向（含一个难题）
+│   ├─ papers.json                   跨卷报告配置
+│   └─ demo_cross_extra.md           跨卷报告的手写附加段
 ├─ papers/                  使用者自备试卷（已 gitignore）
 └─ out/                     产出（已 gitignore）
 ```
